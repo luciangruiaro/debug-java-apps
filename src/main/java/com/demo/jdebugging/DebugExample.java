@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.demo.jdebugging;
 
 public class DebugExample {
     public static void main(String[] args) {
