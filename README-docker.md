@@ -9,8 +9,10 @@
 
 1. Build the JAR:
    ```bash
-   ./mvnw clean package
+   mvn clean package
    ```
+mvn -v
+
 
 2. Build and run the Docker container:
 
