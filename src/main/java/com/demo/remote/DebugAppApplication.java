@@ -1,13 +1,11 @@
-package com.demo.jdebugging;
+package com.demo.remote;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DebugJavaAppsApplication {
-
+public class DebugAppApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DebugJavaAppsApplication.class, args);
+        SpringApplication.run(DebugAppApplication.class, args);
     }
-
 }

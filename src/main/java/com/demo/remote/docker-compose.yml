@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  springboot-debug:
+    build: .
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    volumes:
+      - .:/app
+    container_name: springboot-debug
