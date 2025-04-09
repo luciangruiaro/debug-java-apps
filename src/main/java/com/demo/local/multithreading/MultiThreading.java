@@ -10,24 +10,23 @@ import java.util.Random;
  */
 public class MultiThreading {
 
+    public static void main(String[] args) throws InterruptedException {
+        work();
+    }
+
+
     /**
      * Launches two threads attempting to add the same element to a shared list.
      */
     static List<Integer> work() throws InterruptedException {
-        final List<Integer> list = new ArrayList<>();
+        final List<Integer> list = new ArrayList<>(); // CopyOnWriteArrayList Collections.synchronizedList
 
-        Thread thread = new Thread(() -> {
-            try {
-                addIfAbsent(list, 10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
 
-        thread.start(); // 🔍 Watch this thread's execution in Debugger
-        addIfAbsent(list, 10); // 🔍 Main thread also calls it
+//        thread.start(); // 🔍 Watch this thread's execution in Debugger
+//        alist, 10); // 🔍 Main thread also calls it
+        list.add(new Random().nextInt(10));
 
-        thread.join();
+//        thread.join();
 
         System.out.println("Elements: " + list);
         return list;
@@ -36,12 +35,7 @@ public class MultiThreading {
     /**
      * Adds an element to the list only if it's not already present.
      * Introduces randomness to cause potential race condition.
+     * private static synchronized void addIfAbsent()
      */
-    private static void addIfAbsent(List<Integer> list, int i) throws InterruptedException {
-        if (!list.contains(i)) {
-            Thread.sleep(new Random().nextInt(100)); // 🐢 Random delay to simulate race
-            list.add(i); // 🛑 Breakpoint here to check concurrent access
-        }
-    }
 
 }

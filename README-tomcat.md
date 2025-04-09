@@ -28,19 +28,25 @@
 
 ## 🚀 Deploy to Tomcat
 
-1. Copy `target/springboot-docker-debug.war` into `C:\tomcat\webapps\`.
+1. Copy `target/demo.war` into `C:\tomcat\webapps\`.
 
-2. Start Tomcat with debug options:
+2. Configure Tomcat to run in debug mode:
+   - Create a file `C:\tomcat\bin\setenv.bat` with the following content:
+     ```bat
+     set JPDA_ADDRESS=5005
+     set JPDA_TRANSPORT=dt_socket
+     ```
+
+3. Start Tomcat with JPDA:
    ```cmd
-   set JPDA_ADDRESS=5005
-   set JPDA_TRANSPORT=dt_socket
    catalina.bat jpda start
    ```
 
 ## 🧠 Debug from IntelliJ
 
 1. Run > Edit Configurations > `+` > Remote JVM Debug
-2. Port: `5005`, Host: `localhost`
+2. Set Host: `localhost`, Port: `5005`
 3. Attach debugger.
 
-> Breakpoints in your Spring code will trigger!
+> ✅ Breakpoints in your Spring code will trigger!
+

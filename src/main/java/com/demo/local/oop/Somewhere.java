@@ -7,17 +7,25 @@ package com.demo.local.oop;
 public class Somewhere {
 
     public static Methods.Interf getObject() {
-        // 🧠 Place breakpoint here to explore anonymous class instantiation
-        return new Methods.Interf() {
-            @Override
-            public String foo() {
-                return "foo has been called";
-            }
+        boolean useAnon = false;
 
-            @Override
-            public String bar() {
-                return "bar has been called";
-            }
-        };
+        if (useAnon) {
+            // 🔍 Demo: Anonymous class
+            return new Methods.Interf() {
+                @Override
+                public String foo() {
+                    return "foo from anonymous";
+                }
+
+                @Override
+                public String bar() {
+                    return "bar from anonymous";
+                }
+            };
+        } else {
+            // 🔍 Demo: Concrete class that inherits logic
+            return new Methods.Clazz3Adapter();
+        }
     }
+
 }
